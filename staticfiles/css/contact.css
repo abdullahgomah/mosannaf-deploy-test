@@ -1,0 +1,26 @@
+.social-info {
+    margin-top: 1rem; 
+}
+
+.social-links {
+    margin-top: .5rem; 
+}
+
+.social-links a {
+    margin-left: 1rem;
+    font-size: 20px;
+}
+
+.error {
+    color: var(--danger-color);
+    list-style: none;
+    padding: 1rem;
+    user-select: none;
+}
+
+.success {
+    color: green; 
+    list-style: none;
+    padding: 1rem;
+    user-select: none;
+}
