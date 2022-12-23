@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+مصنف … الرئيسية
+{% endblock title %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static './css/index.css' %}">
+{% endblock stylesheet %}
+
+{% block content %}
+
+{% include "main.html" %}
+<section class=" section books-section">
+	<div class="container swiper mySwiper">
+		<div class="heading">
+			<h1>أشهر الكتب</h1>
+		</div>
+		<div class="books swiper-wrapper">
+			<div class="book swiper-slide">
+				<img src="./assets/images/ابني مشتت الانتباه (غلاف).jpg" alt="" class="book_img">
+				<p class="book_title">ابني متشتت الانتباه</p>
+			</div>
+			<div class="book swiper-slide ">
+				<img src="./assets/images/فن التواصل مع المراهقين (غلاف).jpg" alt="" class="book_img">
+				<p class="book_title">فن التواصل مع المراهقين</p>
+			</div>
+			<div class="book swiper-slide ">
+				<img src="./assets/images/حالة طوارئ (غلاف).jpg" alt="" class="book_img">
+				<p class="book_title">حالة طوارئ</p>
+			</div>
+			<div class="book swiper-slide ">
+				<img src="./assets/images/الحوار مع الابناء علاج لكل داء (غلاف).jpg" alt="" class="book_img">
+				<p class="book_title">الحوار مع اﻷبناء علاج لكل داء</p>
+			</div>
+			<div class="book swiper-slide ">
+				<img src="./assets/images/الحوار مع الابناء علاج لكل داء (غلاف).jpg" alt="" class="book_img">
+				<p class="book_title">الحوار مع اﻷبناء علاج لكل داء</p>
+			</div>
+			<div class="book swiper-slide ">
+				<img src="./assets/images/الحوار مع الابناء علاج لكل داء (غلاف).jpg" alt="" class="book_img">
+				<p class="book_title">الحوار مع اﻷبناء علاج لكل داء</p>
+			</div>
+			<div class="book swiper-slide ">
+				<img src="./assets/images/الحوار مع الابناء علاج لكل داء (غلاف).jpg" alt="" class="book_img">
+				<p class="book_title">الحوار مع اﻷبناء علاج لكل داء</p>
+			</div>
+
+
+		</div>
+		<div class="swiper-button-next"></div>
+		<div class="swiper-button-prev"></div>
+		<div class="swiper-pagination"></div>
+
+		<!-- <a href="#" class="btn btn-solid-dark">عرض المزيد</a> -->
+	</div>
+</section>
+
+<section class=" section books-section" id="mainwoman">
+	<div class="container swiper mySwiper">
+		<div class="heading">
+			<h1>كتب الرجل والمرأة</h1>
+		</div>
+		<div class="books swiper-wrapper">
+			<div class="book swiper-slide">
+				<img src="./assets/images/ابني مشتت الانتباه (غلاف).jpg" alt="" class="book_img">
+				<p class="book_title">ابني متشتت الانتباه</p>
+			</div>
+			<div class="book swiper-slide ">
+				<img src="./assets/images/فن التواصل مع المراهقين (غلاف).jpg" alt="" class="book_img">
+				<p class="book_title">فن التواصل مع المراهقين</p>
+			</div>
+			<div class="book swiper-slide ">
+				<img src="./assets/images/حالة طوارئ (غلاف).jpg" alt="" class="book_img">
+				<p class="book_title">حالة طوارئ</p>
+			</div>
+			<div class="book swiper-slide ">
+				<img src="./assets/images/الحوار مع الابناء علاج لكل داء (غلاف).jpg" alt="" class="book_img">
+				<p class="book_title">الحوار مع اﻷبناء علاج لكل داء</p>
+			</div>
+			<div class="book swiper-slide ">
+				<img src="./assets/images/الحوار مع الابناء علاج لكل داء (غلاف).jpg" alt="" class="book_img">
+				<p class="book_title">الحوار مع اﻷبناء علاج لكل داء</p>
+			</div>
+			<div class="book swiper-slide ">
+				<img src="./assets/images/الحوار مع الابناء علاج لكل داء (غلاف).jpg" alt="" class="book_img">
+				<p class="book_title">الحوار مع اﻷبناء علاج لكل داء</p>
+			</div>
+			<div class="book swiper-slide ">
+				<img src="./assets/images/الحوار مع الابناء علاج لكل داء (غلاف).jpg" alt="" class="book_img">
+				<p class="book_title">الحوار مع اﻷبناء علاج لكل داء</p>
+			</div>
+
+
+		</div>
+		<div class="swiper-button-next"></div>
+		<div class="swiper-button-prev"></div>
+		<div class="swiper-pagination"></div>
+
+		<!-- <a href="#" class="btn btn-solid-dark">عرض المزيد</a> -->
+	</div>
+</section>
+
+{% endblock content %}

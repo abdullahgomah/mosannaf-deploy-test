@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+ترشيح مصنف
+{% endblock title %}
+
+{% block stylesheet %}
+
+{% endblock stylesheet %}
+
+{% block content %}
+
+
+<div class="">
+    <div class="container">
+
+        <div class="heading">
+            <h2 class="intro-title">لم تجد ما تبحث عنه، لا بأس! قم بترشيحه وسيتم إضافته قريباً</h2>
+        </div>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <div class="input">
+                <input name="details" placeholder="اسم المصنف / المطبوعة">
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                        {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+            <button type="submit" class="btn btn-solid-dark">إرسال</button>
+        </form>
+
+
+
+    </div>
+</div>
+
+
+{% endblock content %}

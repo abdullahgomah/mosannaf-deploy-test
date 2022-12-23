@@ -1,0 +1,143 @@
+.dashboard {
+    margin: 1rem auto;
+}
+.dashboard-title {
+    font-size: 20px;
+    color: #777777;
+}
+.dashboard .heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dashboard .heading .btn {
+    font-size: 16px  !important;
+}
+
+.grid {
+    gap: 1rem;
+    width: 90% !important;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+    justify-content: center;
+
+}
+
+.item {
+    background: #32323270; 
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 1rem;
+    width: 420px;
+    max-width: 90vw !important;
+    height: 290px;
+    position: relative;
+    box-shadow: 0 6px 10px #00000050;
+    
+}
+.item * {
+    color: var(--primary-color)
+}
+.item img {
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%; 
+    max-width: 100%;
+    height: 100%; 
+    object-fit: cover;
+    z-index: -1;
+    border-radius: 1rem;
+}
+
+.item .btn {
+    position: absolute;
+    bottom: 20px; 
+    left: 20px; 
+    border-radius: 50%;
+    min-width: 50px;
+    width: 50px !important; 
+    height: 50px !important;
+    text-align: center;
+    color: var(--secondary-color);
+    background: var(--primary-color);
+    font-size: 25px;
+    box-shadow: 0 4px 4px #32323220;
+}
+
+
+
+@media (max-width: 700.98px) { 
+    .item {
+        width: 90% !important;
+        margin: 0rem auto !important;
+    }
+}
+
+@media (max-width: 300px) {
+    .dashboard .heading {
+        flex-direction: column;
+        margin-bottom: 1rem;
+    }
+}
+
+.notes .item {
+    width: 90% !important;
+    display: block !important;
+    background-color: transparent;
+    border: 2px solid #777777;
+    padding: 0rem 1rem;
+}
+
+.notes .item * {
+    color: #323232;
+}
+
+.notes .heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #323232 !important;
+    height: fit-content !important;
+}
+
+
+.notes .heading h1 {
+    color: #323232; 
+}
+.notes .heading .btn {
+    background-color: var(--secondary-color);
+}
+
+.notes .btn {
+    position: static; 
+    color: #f9f9f9 !important;
+}
+
+.notes .note {
+    padding: 0rem 1rem; 
+    border: 2px solid #777777;
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.note__text {
+    font-weight: bold;
+    text-align: center;
+}
+
+.note .btn {
+    box-shadow: none;
+}
+.note .btn i{
+    color: var(--danger-color);
+}
+.note .btn i:hover {
+    filter: drop-shadow(0 4px 10px #32323280)
+}

@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+تواصل معنا
+{% endblock title %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static './css/contact.css' %}">
+{% endblock stylesheet %}
+
+{% block content %}
+<div class="contact-form">
+    <div class="container">
+
+        <div class="heading">
+            <h1 class="intro-title">تواصل معنا</h1>
+        </div>
+
+        <form method="POST">
+            {% csrf_token %}
+            <div class="input">
+                <input type="email" name='email' placeholder="البريد الإلكتروني">
+            </div>
+            <div class="input">
+                <textarea name="details" placeholder="تفاصيل الرسالة"></textarea>
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                        {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+            <button type="submit" class="btn btn-solid-dark">إرسال</button>
+        </form>
+
+
+
+    </div>
+</div>
+
+<section class="social-info">
+
+    <div class="container">
+        <div class="heading">
+            <h2>تابعنا على</h2>
+        </div>
+        <div class="social-links">
+
+            {% if contact.instagram %}
+            <a href="{{contact.instagram}}"><i class="fa-brands fa-instagram"></i></a>
+            {% endif %}
+
+            {% if contact.facebook %}
+            <a href="{{contact.facebook}}"><i class="fa-brands fa-facebook"></i></a>
+            {% endif %}
+
+            {% if contact.twitter %}
+            <a href="{{contact.twitter}}"><i class="fa-brands fa-twitter"></i></a>
+            {% endif %}
+
+            {% if contact.youtube %}
+            <a href="{{contact.youtube}}"><i class="fa-brands fa-youtube"></i></a>
+            {% endif %}
+        </div>
+
+
+    </div>
+
+</section>
+
+
+{% endblock content %}

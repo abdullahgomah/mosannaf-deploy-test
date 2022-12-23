@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+نتائج البحث
+{% endblock title %}
+
+{% block content %}
+
+
+{% include 'main.html' %}
+
+<section class=" section books-section" id="mainwoman">
+    <div class="container swiper mySwiper">
+        <div class="heading">
+            <h1 class="intro-heading">نتائج البحث عن: {{search_word}}</h1>
+        </div>
+        <div class="books swiper-wrapper">
+            {% if results %}
+            {% for result in results %}
+            <div class="book swiper-slide">
+                <img src="{{result.image.url}}" alt="" class="book_img">
+                <p class="book_title">{{result.name}}</p>
+            </div>
+            {% endfor %}
+            {% else %}
+            <h2>لا يوجد نتائج بحث</h2>
+            {% endif %}
+            
+
+
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+
+        <!-- <a href="#" class="btn btn-solid-dark">عرض المزيد</a> -->
+    </div>
+</section>
+
+
+{% endblock content %}

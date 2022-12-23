@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+جميع المصنفات
+{% endblock title %}
+
+{% block content %}
+
+
+{% include 'main.html' %}
+
+<section class=" section books-section" id="mainwoman">
+    <div class="container swiper mySwiper">
+        <div class="heading">
+            <h1 class="intro-heading">جميع المصنفات</h1>
+        </div>
+        <div class="books swiper-wrapper">
+            {% for mosannaf in mosannafs %}
+            <div class="book swiper-slide">
+                <img src="{{mosannaf.image.url}}" alt="" class="book_img">
+                <a href="{% url 'mosannaf:details' mosannaf.id %}" class="book_title"><p class="book_title">{{mosannaf.name}}</p>
+            </div>
+            {% endfor %}
+            
+
+
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+
+        <!-- <a href="#" class="btn btn-solid-dark">عرض المزيد</a> -->
+    </div>
+</section>
+
+
+{% endblock content %}

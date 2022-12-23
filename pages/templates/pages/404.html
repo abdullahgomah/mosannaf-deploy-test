@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+الصفحة غير موجودة
+{% endblock title %}
+
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static './css/404.css' %}">
+{% endblock stylesheet %}
+
+
+{% block content %}
+
+<div class="main">
+    <div class="container">
+        <p class="big-heading">404</p>
+        <p class="heading">أوبس!!! لم نستطع إيجاد مع تبحث عنه</p>
+        <a href="#" class="btn btn-solid-dark">العودة للصفحة الرئيسية</a>
+    </div>
+</div>
+
+{% endblock content %}

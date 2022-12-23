@@ -1,0 +1,22 @@
+{% for feedback in feedbacks %}
+<div class="feedback">
+    <div class="feedback-account">
+        <p class="feedback-account__user">ام محمد</p>
+        <div class="feedback-account__rate">
+            <div class="stars">
+                <i class="fas fa-star "></i>
+                <i class="fas fa-star-half "></i>
+            </div>
+            <p>
+                <!-- provided by django -->
+                (4.8 / 5)
+            </p>
+        </div>
+    </div>
+    <div class="feedback-details">
+        <p>
+            {{feedback.details}}
+        </p>
+    </div>
+</div>
+{% endfor %}

@@ -1,0 +1,248 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+{{mosannaf.name}}
+{% endblock title %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static './css/book_details.css' %}">
+<!-- <link rel="stylesheet" href="{% static './css/signup.css' %}"> -->
+<style>
+    form .input {
+    margin-bottom: 1rem;
+    position: relative;
+    }
+
+    form .input input{
+        width: 100% !important;
+        padding-right: 2.5rem; 
+        height: 50px;
+        outline: none;
+        border: 1px solid #888888 !important;
+        border-radius: 50px;
+        margin-top: .5rem;
+    }
+</style>
+{% endblock stylesheet %}
+
+
+{% block content %}
+
+
+<div class="main">
+    <div class="container">
+        <div class="intro">
+            <!-- book title will be provided usign django -->
+            <h1 class="heading book-title">{{mosannaf.name}}</h1>
+            <div class="prop">
+                <!-- author will be provided using django -->
+                تأليف: <span class="author">
+                    <a href="#" style="color:#323232">
+                        {{mosannaf.author}}
+                    </a>
+                </span>
+            </div>
+            <!-- <div class="rating">
+                <div class="stars">
+                    <i class="fas fa-star "></i>
+                    <i class="fas fa-star-half "></i>
+                </div>
+                <div class="rating_count">
+                    <a href="#" style="color: #323232;">
+                        1.5 / 5 (<span>250 &nbsp;</span>تقييم)
+                    </a>
+                </div>
+            </div> -->
+        </div>
+        <div class="cover">
+            <div class="img">
+                <!-- book image provided using django -->
+                <img src="{{mosannaf.image.url}}" alt="">
+            </div>
+            <div class="cta">
+                <a href="{{mosannaf.file.url}}" target="_blank" class=" btn btn-solid-dark">تحميل</a>
+                <a href="#" class="btn btn-outline-dark">إضافة إلى المفضلة</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="more-details">
+    <div class="container">
+
+        <div class="about-book">
+            <div class="heading">
+                <h1>نبذه عن المصنف</h1>
+            </div>
+            <p>
+                {{mosannaf.summary|safe}}
+            </p>
+        </div>
+
+        <div class="table">
+            <div class="heading">
+                <h1>المزيد من التفاصيل</h1>
+            </div>
+            <div class="properties">
+                <p class="property">نوع المصنف:&nbsp;<span class="value">{{mosannaf.m_type}}</span></p>
+                <p class="property">فئة المصنف:&nbsp;<span class="value">{{mosannaf.category}}</span></p>
+                <p class="property">تفسير اسم المصنف: <span class="value">{{mosannaf.meaning}}</span></p>
+                <p class="property">أصل لغة المصنف: <span class="value">{{mosannaf.original_lang}}</span></p>
+                <p class="property">اﻷجزاء: <span class="value">{{mosannaf.parts_count}}</span></p>
+                <p class="property">اﻷبواب: <span class="value">{{mosannaf.units_count}}</span></p>
+                <p class="property">الفصول: <span class="value">{{mosannaf.chapters_count}}</span></p>
+                <p class="property">موضوع: <span class="value">{{mosannaf.subject}}</span></p>
+                <p class="property">الباب: <span class="value">{{mosannaf.unit}}</span></p>
+                <p class="property">القسم: <span class="value">{{mosannaf.branch}}</span></p>
+                <p class="property">القسم الفرعي: <span class="value">{{mosannaf.sub_branch}}</span></p>
+                <p class="property">الفصل: <span class="value">{{mosannaf.chapter}}</span></p>
+                <p class="property">المجال: <span class="value">{{mosannaf.field}}</span></p>
+                <p class="property">النشاط: <span class="value">{{mosannaf.activity}}</span></p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<section class=" section books-section" id="mainwoman">
+    <div class="container swiper mySwiper">
+        <div class="heading">
+            <h1>كتب مشابهة</h1>
+        </div>
+        <div class="books swiper-wrapper">
+            <div class="book swiper-slide">
+                <img src="./assets/images/ابني مشتت الانتباه (غلاف).jpg" alt="" class="book_img">
+                <p class="book_title">ابني متشتت الانتباه</p>
+            </div>
+            <div class="book swiper-slide ">
+                <img src="./assets/images/فن التواصل مع المراهقين (غلاف).jpg" alt="" class="book_img">
+                <p class="book_title">فن التواصل مع المراهقين</p>
+            </div>
+            <div class="book swiper-slide ">
+                <img src="./assets/images/حالة طوارئ (غلاف).jpg" alt="" class="book_img">
+                <p class="book_title">حالة طوارئ</p>
+            </div>
+            <div class="book swiper-slide ">
+                <img src="./assets/images/الحوار مع الابناء علاج لكل داء (غلاف).jpg" alt="" class="book_img">
+                <p class="book_title">الحوار مع اﻷبناء علاج لكل داء</p>
+            </div>
+            <div class="book swiper-slide ">
+                <img src="./assets/images/الحوار مع الابناء علاج لكل داء (غلاف).jpg" alt="" class="book_img">
+                <p class="book_title">الحوار مع اﻷبناء علاج لكل داء</p>
+            </div>
+            <div class="book swiper-slide ">
+                <img src="./assets/images/الحوار مع الابناء علاج لكل داء (غلاف).jpg" alt="" class="book_img">
+                <p class="book_title">الحوار مع اﻷبناء علاج لكل داء</p>
+            </div>
+            <div class="book swiper-slide ">
+                <img src="./assets/images/الحوار مع الابناء علاج لكل داء (غلاف).jpg" alt="" class="book_img">
+                <p class="book_title">الحوار مع اﻷبناء علاج لكل داء</p>
+            </div>
+
+
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+
+        <!-- <a href="#" class="btn btn-solid-dark">عرض المزيد</a> -->
+    </div>
+</section>
+
+
+
+
+<section class="feedbacks" id="feedbacks">
+    <div class="container">
+        <div class="heading">
+            <h2>إضافة تقييم</h2>
+        </div>
+        <form method="POST" id="add-feedback">
+            {% csrf_token %}
+            <div class="input">
+                {{form1}}
+                <button type="submit" id="send-button" class="btn btn-solid-dark">إرسال</button>
+            </div>
+        </form>
+        <div class="heading">
+            <h2>التقييمات السابقة</h2>
+        </div>
+
+        <div id="feedbacks-container" data-url="">
+            <!-- {% for rate in rates %}
+            <div class="feedback">
+                <div class="feedback-account">
+                    <p class="feedback-account__user">ام محمد</p>
+                    <div class="feedback-account__rate">
+                        <div class="stars">
+                            <i class="fas fa-star "></i>
+                            <i class="fas fa-star-half "></i>
+                        </div>
+                        <p>
+                            (4.8 / 5)
+                        </p>
+                    </div>
+                </div>
+                <div class="feedback-details">
+                    <p>
+                        {{rate.details}}
+                    </p>
+                </div>
+            </div>
+            {% endfor %} -->
+        </div>
+        <a href="" class="btn btn-solid-dark">المزيد من التقييمات</a>
+    </div>
+</section>
+
+
+{% endblock content %}
+
+{% block javascript %}
+<script>
+    document.querySelector('input[name=details]').setAttribute('placeholder', "اكتب تقييمك هنا")
+
+
+    function getFeedbacks() {
+        $.ajax({
+            type: 'GET', 
+            url: '{% url "mosannaf:get-feedbacks" %}', 
+            data: {
+                mosannaf_id: '{{mosannaf.id}}',
+                action: 'get'
+            }, 
+            success: function(response) { 
+                feedbacks = response['feedbacks']; 
+                $('#feedbacks-container').html(response);
+            }, error: function(xhr, errmsg, err) {
+
+            }
+        })
+    }
+
+    getFeedbacks(); 
+
+    $(document).on('click', '#send-button', function(e) {
+        e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: '{% url "mosannaf:add-rate" %}',
+            data: {
+                mosannaf_id: '{{mosannaf.id}}',
+                details: $("input[name=details]").val(),
+                csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                action: 'post'
+            }, 
+            success: function(json) {
+                getFeedbacks();
+
+                document.querySelector("#add-feedback").reset();
+            }, error: function (xhr, errmsg, err) {
+                
+            }
+        })
+    })
+</script>
+{% endblock javascript %}
