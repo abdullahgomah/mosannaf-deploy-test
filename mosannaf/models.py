@@ -10,11 +10,16 @@ from django_countries.fields import CountryField
 
 class Mosannaf(models.Model):
     name = models.CharField(max_length=255, verbose_name='اسم المصنف')
+    meaning = models.TextField(verbose_name='تفسير اسم المصنف')
+    summary = models.TextField(verbose_name='نبذه عن المصنف')
+
     m_type = models.ForeignKey(
         'Type', on_delete=models.SET_NULL, blank=True, null=True, verbose_name='نوع المصنف')
+
+    chain = models.CharField(max_length=200, verbose_name='سلسلة')
+
     category = models.ForeignKey(
         "Category", verbose_name="فئة المصنف", on_delete=models.SET_NULL, null=True, blank=True)
-    meaning = models.TextField(verbose_name='تفسير اسم المصنف')
     original_lang = models.ForeignKey(
         "Lang", verbose_name="أصل لغة المصنف", on_delete=models.SET_NULL, null=True, blank=True)
     date_published = models.DateField(
@@ -27,15 +32,12 @@ class Mosannaf(models.Model):
     #                             on_delete=models.SET_NULL, blank=True, null=True)
     subject = models.CharField(
         verbose_name="الموضوع", blank=True, null=True, max_length=100)
-    # unit = models.ForeignKey("Unit", verbose_name='باب',
-    #                          on_delete=models.SET_NULL, null=True, blank=True)
-    unit = models.CharField(max_length=200, verbose_name='الباب')
     # branch = models.ForeignKey("Branch", verbose_name='القسم',
     #                            on_delete=models.SET_NULL, blank=True, null=True)
     branch = models.CharField(max_length=200, verbose_name="القسم")
-    # sub_branch = models.ForeignKey(
-    #     "SubBranch", verbose_name='القسم الفرعي', on_delete=models.SET_NULL, blank=True, null=True)
-    sub_brnach = models.CharField(max_length=200, verbose_name="القسم الفرعي")
+    sub_branch = models.ForeignKey(
+        "SubBranch", verbose_name='القسم الفرعي', on_delete=models.SET_NULL, blank=True, null=True)
+    # sub_brnach = models.CharField(max_length=200, verbose_name="القسم الفرعي")
 
     # chapter = models.ForeignKey(
     #     "Chapter", verbose_name="الفصل", on_delete=models.SET_NULL, blank=True, null=True)
@@ -48,7 +50,6 @@ class Mosannaf(models.Model):
     #     "Activity", verbose_name='النشاط', on_delete=models.SET_NULL, blank=True, null=True)
     activity = models.CharField(max_length=200, verbose_name="النشاط")
 
-    summary = models.TextField(verbose_name='نبذه عن المصنف')
     image = models.ImageField(verbose_name='صورة المصنف', upload_to='أغلفة/',
                               height_field=None, width_field=None, max_length=None)
     file = models.FileField(verbose_name='ملف المصنف',
@@ -85,11 +86,11 @@ class Mosannaf(models.Model):
     publisher = models.ForeignKey(
         "Publisher", verbose_name='ناشر', on_delete=models.SET_NULL, blank=True, null=True)
 
-    print_year = models.CharField(verbose_name="سنة الطباعة", max_length=20)
-    print_number = models.CharField(verbose_name="رقم الطباعة", max_length=20)
-
     printing_house = models.ForeignKey(
         "PrintingHouse", on_delete=models.SET_NULL, null=True, blank=True, verbose_name="المطبعة")
+
+    print_year = models.CharField(verbose_name="سنة الطباعة", max_length=20)
+    print_number = models.CharField(verbose_name="رقم الطباعة", max_length=20)
 
     publish_year = models.CharField(verbose_name="سنة النشر", max_length=20)
     # publish_year = models.DateField(verbose_name="سنة النشر", viewMode='years')
@@ -210,8 +211,8 @@ class SubBranch(models.Model):
         return self.name
 
     class Meta:
-        verbose_name = "قسم الفرعي"
-        verbose_name_plural = "اﻷقسام الفرعية"
+        verbose_name = "قسم فرعي للمكتبة"
+        verbose_name_plural = "اﻷقسام الفرعية للمكتبة"
 
 # جدول المجال
 
@@ -424,8 +425,8 @@ class TranslatedMosannaf(models.Model):
         return f"مترجم {self.mosannaf.name}"
 
     class Meta:
-        verbose_name = 'مترجم مصنف'
-        verbose_name_plural = "مترجمات المصنفات"
+        verbose_name = 'مصنف مترجم'
+        verbose_name_plural = "مصنف مترجم"
 
 
 # publisher models
@@ -489,8 +490,8 @@ class UnitType(models.Model):
         return self.name
 
     class Meta:
-        verbose_name = 'نوع وحدة'
-        verbose_name_plural = "انواع الوحدات"
+        verbose_name = 'نوع وحدة قياس'
+        verbose_name_plural = "نوع وحدة القياس"
 
 
 # printing house models
