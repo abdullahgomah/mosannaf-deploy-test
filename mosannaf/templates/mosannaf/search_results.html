@@ -20,13 +20,15 @@
             {% for result in results %}
             <div class="book swiper-slide">
                 <img src="{{result.image.url}}" alt="" class="book_img">
-                <p class="book_title">{{result.name}}</p>
+                <a href='{{result.id}}'>
+                    <p class="book_title">{{result.name}}</p>
+                </a>
             </div>
             {% endfor %}
             {% else %}
             <h2>لا يوجد نتائج بحث</h2>
             {% endif %}
-            
+
 
 
         </div>
