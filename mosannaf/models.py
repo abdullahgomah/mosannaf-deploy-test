@@ -32,9 +32,9 @@ class Mosannaf(models.Model):
     #                             on_delete=models.SET_NULL, blank=True, null=True)
     subject = models.CharField(
         verbose_name="الموضوع", blank=True, null=True, max_length=100)
-    # branch = models.ForeignKey("Branch", verbose_name='القسم',
-    #                            on_delete=models.SET_NULL, blank=True, null=True)
-    branch = models.CharField(max_length=200, verbose_name="القسم")
+    branch = models.ForeignKey(
+        "Branch", verbose_name='القسم', on_delete=models.SET_NULL, blank=True, null=True)
+    # branch = models.CharField(max_length=200, verbose_name="القسم")
     sub_branch = models.ForeignKey(
         "SubBranch", verbose_name='القسم الفرعي', on_delete=models.SET_NULL, blank=True, null=True)
     # sub_brnach = models.CharField(max_length=200, verbose_name="القسم الفرعي")
@@ -57,31 +57,31 @@ class Mosannaf(models.Model):
     m_format = models.ForeignKey(
         "Formats", verbose_name="صيغة المصنف", blank=True, null=True, on_delete=models.SET_NULL)
 
-    # m_form = models.ForeignKey(
-    #     "Forms", verbose_name="شكل المصنف", blank=True, null=True, on_delete=models.SET_NULL)
-    m_form = models.CharField(max_length=200, verbose_name="شكل المصنف")
+    m_form = models.ForeignKey(
+        "Forms", verbose_name="شكل المصنف", blank=True, null=True, on_delete=models.SET_NULL)
+    # m_form = models.CharField(max_length=200, verbose_name="شكل المصنف")
 
     # size = models.ForeignKey(
     #     "Size", verbose_name="حجم المصنف", blank=True, null=True, on_delete=models.SET_NULL)
     m_size = models.CharField(max_length=200, verbose_name="حجم المصنف")
 
-    # measurement = models.ForeignKey(
-    #     "Measurement", verbose_name="قياس المصنف", blank=True, null=True, on_delete=models.SET_NULL)
+    measurement = models.ForeignKey(
+        "Measurement", verbose_name="قياس المصنف", blank=True, null=True, on_delete=models.SET_NULL)
 
-    measurement = models.CharField(max_length=200, verbose_name="قياس المصنف")
+    # measurement = models.CharField(max_length=200, verbose_name="قياس المصنف")
 
-    # preparation = models.ForeignKey(
-    #     "Preparation", verbose_name='إعداد', on_delete=models.SET_NULL, blank=True, null=True)
-    preparation = models.CharField(max_length=200, verbose_name="إعداد")
+    preparation = models.ForeignKey(
+        "Preparation", verbose_name='إعداد', on_delete=models.SET_NULL, blank=True, null=True)
+    # preparation = models.CharField(max_length=200, verbose_name="إعداد")
 
-    # author = models.ForeignKey(
-    #     "Author", verbose_name='تأليف', on_delete=models.SET_NULL, blank=True, null=True)
+    author = models.ForeignKey(
+        "Author", verbose_name='المؤلف', on_delete=models.SET_NULL, blank=True, null=True)
 
-    author = models.CharField(max_length=200, verbose_name="تأليف")
+    # author = models.CharField(max_length=200, verbose_name="تأليف")
 
-    # checker = models.ForeignKey(
-    #     "Checker", verbose_name='المحقق', on_delete=models.SET_NULL, blank=True, null=True)
-    checker = models.CharField(max_length=200, verbose_name="المحقق")
+    checker = models.ForeignKey(
+        "Checker", verbose_name='المحقق', on_delete=models.SET_NULL, blank=True, null=True)
+    # checker = models.CharField(max_length=200, verbose_name="المحقق")
 
     publisher = models.ForeignKey(
         "Publisher", verbose_name='ناشر', on_delete=models.SET_NULL, blank=True, null=True)
@@ -90,7 +90,7 @@ class Mosannaf(models.Model):
         "PrintingHouse", on_delete=models.SET_NULL, null=True, blank=True, verbose_name="المطبعة")
 
     print_year = models.CharField(verbose_name="سنة الطباعة", max_length=20)
-    print_number = models.CharField(verbose_name="رقم الطباعة", max_length=20)
+    print_number = models.CharField(verbose_name="رقم طبعة", max_length=20)
 
     publish_year = models.CharField(verbose_name="سنة النشر", max_length=20)
     # publish_year = models.DateField(verbose_name="سنة النشر", viewMode='years')
@@ -108,7 +108,9 @@ class Mosannaf(models.Model):
     iso = models.CharField(max_length=200, verbose_name='ايزو')
 
     # 20# فنان الغلاف
-    cover_artist = models.CharField(max_length=200, verbose_name="فنان الغلاف")
+    # cover_artist = models.CharField(max_length=200, verbose_name="فنان الغلاف")
+    cover_artist = models.ForeignKey(
+        "CoverArtists", verbose_name="فنان الغلاف", on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
         return self.name
@@ -116,6 +118,15 @@ class Mosannaf(models.Model):
     class Meta:
         verbose_name = 'مصنف'
         verbose_name_plural = 'المصنفات'
+
+
+# فنان الغلاف
+class CoverArtists(models.Model):
+    name = models.CharField(verbose_name='الاسم', max_length=200)
+
+    class Meta:
+        verbose_name = 'فنان غلاف'
+        verbose_name_plural = 'فنانين الأغلفة'
 
 
 # تقييم المصنف
@@ -218,7 +229,7 @@ class SubBranch(models.Model):
 
 
 class Field(models.Model):
-    name = models.CharField(max_length=250, verbose_name='اسم المجال')
+    name = models.CharField(max_length=150, verbose_name='اسم المجال')
 
     def __str__(self):
         return self.name
@@ -418,6 +429,8 @@ class TranslatedMosannaf(models.Model):
     # 21# سلسلة
     chain = models.CharField(max_length=100, verbose_name="السلسلة")
 
+    # fields = models.ManyToManyField("Field", verbose_name= 'المجالات', null=True, blank=True)
+
     # 22# قسم
     branch = models.CharField(max_length=100, verbose_name="القسم")
 
@@ -534,25 +547,9 @@ class PrintingHouse(models.Model):
     email = models.EmailField(
         verbose_name="البريد الإلكتروني", max_length=150)  # البريد الإلكتروني
 
-    # فنان الغلاف
-    # سلسلة
-    branch = models.ForeignKey(
-        'PrintingBranch', verbose_name='القسم', on_delete=models.SET_NULL, blank=True, null=True)
-
     def __str__(self):
         return self.name
 
     class Meta:
         verbose_name = 'مطبعة'
         verbose_name_plural = "المطابع"
-
-
-class PrintingBranch(models.Model):
-    name = models.CharField(max_length=100, verbose_name='الاسم')
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        verbose_name = 'قسم'
-        verbose_name_plural = 'اﻷقسام'

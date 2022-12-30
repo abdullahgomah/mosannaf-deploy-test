@@ -17,7 +17,7 @@
 
     form .input input{
         width: 100% !important;
-        padding-right: 2.5rem; 
+        padding-right: 2.5rem;
         height: 50px;
         outline: none;
         border: 1px solid #888888 !important;
@@ -162,7 +162,7 @@
         <form method="POST" id="add-feedback">
             {% csrf_token %}
             <div class="input">
-                {{form1}}
+              {{form1}}
                 <button type="submit" id="send-button" class="btn btn-solid-dark">إرسال</button>
             </div>
         </form>
@@ -202,19 +202,20 @@
 
 {% block javascript %}
 <script>
-    document.querySelector('input[name=details]').setAttribute('placeholder', "اكتب تقييمك هنا")
+  document.querySelector('input[name=details]').setAttribute('placeholder', "اكتب تقييمك هنا")
+    // document.querySelector('input[name=details]').setAttribute('required')
 
 
     function getFeedbacks() {
         $.ajax({
-            type: 'GET', 
-            url: '{% url "mosannaf:get-feedbacks" %}', 
+            type: 'GET',
+            url: '{% url "mosannaf:get-feedbacks" %}',
             data: {
                 mosannaf_id: '{{mosannaf.id}}',
                 action: 'get'
-            }, 
-            success: function(response) { 
-                feedbacks = response['feedbacks']; 
+            },
+            success: function(response) {
+                feedbacks = response['feedbacks'];
                 $('#feedbacks-container').html(response);
             }, error: function(xhr, errmsg, err) {
 
@@ -222,7 +223,7 @@
         })
     }
 
-    getFeedbacks(); 
+    getFeedbacks();
 
     $(document).on('click', '#send-button', function(e) {
         e.preventDefault();
@@ -234,13 +235,13 @@
                 details: $("input[name=details]").val(),
                 csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
                 action: 'post'
-            }, 
+            },
             success: function(json) {
                 getFeedbacks();
 
                 document.querySelector("#add-feedback").reset();
             }, error: function (xhr, errmsg, err) {
-                
+
             }
         })
     })
