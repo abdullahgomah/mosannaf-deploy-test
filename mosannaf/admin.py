@@ -20,6 +20,7 @@ admin.site.register(Preparation)
 admin.site.register(Author)
 admin.site.register(Checker)
 admin.site.register(CoverArtists)
+admin.site.register(Specialization)
 
 admin.site.register(Rate)  # جدول التقييمات
 admin.site.register(TranslatedMosannaf)

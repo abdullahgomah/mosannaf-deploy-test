@@ -18,8 +18,17 @@ class Mosannaf(models.Model):
 
     chain = models.CharField(max_length=200, verbose_name='سلسلة')
 
+    related_to = models.ForeignKey(
+        "Mosannaf", on_delete=models.SET_NULL, null=True, blank=True, verbose_name='ذو علاقة', related_name='mosannaf_related_to')
+    competitor = models.ForeignKey(
+        "Mosannaf", on_delete=models.SET_NULL, verbose_name="منافس", null=True, blank=True, related_name='mosannaf_competitor')
+    contrary = models.ForeignKey(
+        "Mosannaf", on_delete=models.SET_NULL, blank=True, null=True, verbose_name='منافي', related_name='mosannaf_contrary')
+
     category = models.ForeignKey(
-        "Category", verbose_name="فئة المصنف", on_delete=models.SET_NULL, null=True, blank=True)
+        "Category", verbose_name="الفئة", on_delete=models.SET_NULL, null=True, blank=True)
+    specialization = models.ForeignKey(
+        "Specialization", verbose_name="التخصصص", on_delete=models.SET_NULL, null=True, blank=True)
     original_lang = models.ForeignKey(
         "Lang", verbose_name="أصل لغة المصنف", on_delete=models.SET_NULL, null=True, blank=True)
     date_published = models.DateField(
@@ -163,6 +172,14 @@ class Category(models.Model):
     class Meta:
         verbose_name = 'فئة المصنف'
         verbose_name_plural = 'فئات المصنفات'
+
+
+class Specialization(models.Model):
+    name = models.CharField(max_length=100, verbose_name='الاسم')
+
+    class Meta:
+        verbose_name = 'تخصص'
+        verbose_name = 'التخصصات'
 
 
 class Lang(models.Model):
