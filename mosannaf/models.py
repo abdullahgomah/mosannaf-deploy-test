@@ -25,6 +25,8 @@ class Mosannaf(models.Model):
     contrary = models.ForeignKey(
         "Mosannaf", on_delete=models.SET_NULL, blank=True, null=True, verbose_name='منافي', related_name='mosannaf_contrary')
 
+    fields = models.ManyToManyField("Field", verbose_name="المجالات")
+
     category = models.ForeignKey(
         "Category", verbose_name="الفئة", on_delete=models.SET_NULL, null=True, blank=True)
     specialization = models.ForeignKey(
@@ -179,7 +181,7 @@ class Specialization(models.Model):
 
     class Meta:
         verbose_name = 'تخصص'
-        verbose_name = 'التخصصات'
+        verbose_name_plural = 'التخصصات'
 
 
 class Lang(models.Model):
@@ -447,6 +449,8 @@ class TranslatedMosannaf(models.Model):
     chain = models.CharField(max_length=100, verbose_name="السلسلة")
 
     # fields = models.ManyToManyField("Field", verbose_name= 'المجالات', null=True, blank=True)
+
+    fields = models.ManyToManyField("Field", verbose_name="المجالات")
 
     # 22# قسم
     branch = models.CharField(max_length=100, verbose_name="القسم")
