@@ -476,7 +476,8 @@ class Publisher(models.Model):
         max_length=100, verbose_name='محافظة')  # محافظة
     village = models.CharField(max_length=100, verbose_name='قرية')  # قرية
     neighborhood = models.CharField(max_length=100, verbose_name='حي')  # حي
-    street = models.CharField(max_length=100, verbose_name='شارع')  # شارع
+    street = models.ForeignKey("Street", verbose_name='شارع',
+                               on_delete=models.SET_NULL, null=True, blank=True)  # شارع
     building = models.IntegerField(
         default=0, verbose_name='بناية رقم')  # بناية رقم
     floor = models.IntegerField(default=0, verbose_name='الدور')  # الدور
@@ -484,8 +485,8 @@ class Publisher(models.Model):
     unit_type = models.ForeignKey(
         'UnitType', on_delete=models.SET_NULL, blank=True, null=True, verbose_name='نوع الوحدة')
     unit_number = models.IntegerField(verbose_name='رقم الوحدة', default=0)
-    nearest_landmark = models.CharField(
-        max_length=150, verbose_name='أقرب معلم بارز')  # أقرب معلم بارز
+    nearest_landmark = models.ForeignKey(
+        "NearLandMark", on_delete=models.SET_NULL, blank=True, null=True, verbose_name='أقرب معلم بارز')
     coordinates = models.CharField(
         max_length=100, verbose_name='إحداثيات')  # إحداثيات
     landline_number = models.CharField(
@@ -526,6 +527,27 @@ class UnitType(models.Model):
 
 # printing house models
 
+class Street(models.Model):
+    name = models.CharField(max_length=100, verbose_name='شارع')
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'شارع'
+        verbose_name_plural = 'شوارع'
+
+
+class NearLandMark(models.Model):
+    name = models.CharField(max_length=200, verbose_name='الاسم')
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'أقرب معلم بارز'
+        verbose_name_plural = 'أقرب معلم بارز'
+
 
 class PrintingHouse(models.Model):
     name = models.CharField(verbose_name='الاسم', max_length=255)  # اسم
@@ -541,13 +563,16 @@ class PrintingHouse(models.Model):
         max_length=100, verbose_name='محافظة')  # محافظة
     village = models.CharField(max_length=100, verbose_name='قرية')  # قرية
     neighborhood = models.CharField(max_length=100, verbose_name='حي')  # حي
-    street = models.CharField(max_length=100, verbose_name='شارع')  # شارع
+    # street = models.CharField(max_length=100, verbose_name='شارع')  # شارع
+    street = models.ForeignKey("Street", verbose_name='شارع',
+                               on_delete=models.SET_NULL, null=True, blank=True)  # شارع
     building = models.IntegerField(
         default=0, verbose_name='بناية رقم')  # بناية رقم
     floor = models.IntegerField(default=0, verbose_name='الدور')  # الدور
     unit = models.CharField(verbose_name='الوحدة', max_length=20)  # الوحدة
-    nearest_landmark = models.CharField(
-        max_length=150, verbose_name='أقرب معلم بارز')  # أقرب معلم بارز
+    # nearest_landmark = models.CharField(max_length=150, verbose_name='أقرب معلم بارز')  # أقرب معلم بارز
+    nearest_landmark = models.ForeignKey(
+        "NearLandMark", on_delete=models.SET_NULL, blank=True, null=True, verbose_name='أقرب معلم بارز')
     coordinates = models.CharField(
         max_length=100, verbose_name='إحداثيات')  # إحداثيات
     landline_number = models.CharField(
