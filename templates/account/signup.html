@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Signup" %}{% endblock %}
+
+{% block content %}
+
+<div class="container">
+<!-- <h1>{% trans "Sign Up" %}</h1> -->
+<h1>إنشاء حساب</h1>
+
+<!-- <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p> -->
+<div class="cta">
+  <p>{% blocktrans %}هل لديك حساب بالفعل؟ <a href="{{ login_url }}">تسجيل دخول</a>.{% endblocktrans %}</p>
+</div>
+
+
+<form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+  {% csrf_token %}
+  <div class="input">
+    {{ form.username }}
+  </div>
+  <div class="input">
+    {{ form.email }}
+  </div>
+  <div class="input">
+    {{ form.password1 }}
+  </div>
+  <div class="input">
+    {{ form.password2 }}
+  </div>
+
+  {% if redirect_field_value %}
+  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+  {% endif %}
+  <!-- <button type="submit">{% trans "Sign Up" %} &raquo;</button> -->
+  <button type="submit" class="btn btn-solid-dark">{% trans "إنشاء حساب" %} &raquo;</button>
+
+</form>
+
+</div>
+
+{% endblock %}

@@ -37,8 +37,8 @@
                 </ul>
             </div>
             <div class="cta">
-                <a href="" class="btn btn-solid-dark">دخول</a>
-                <a href="" class="btn btn-outline-dark">
+                <a href="{% url 'account_login' %}" class="btn btn-solid-dark">دخول</a>
+                <a href="{% url 'account_signup' %}" class="btn btn-outline-dark">
                     <i class="fa-solid fa-user"></i>
                     تسجيل حساب
                 </a>
@@ -82,8 +82,22 @@
         </ul>
     </div>
 
+
+
     {% block content %}
     {% endblock content %}
+
+
+        {% if messages %}
+        <div>
+          <!-- <strong>Messages:</strong> -->
+          <ul>
+            {% for message in messages %}
+            <li>{{message}}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
@@ -102,7 +116,7 @@
 
     {% block javascript %}
 
-    
+
 
     {% endblock javascript %}
 
