@@ -3,7 +3,7 @@
 
 {% load i18n %}
 
-{% block head_title %}{% trans "Signup" %}{% endblock %}
+{% block title %}{% trans "إنشاء حساب" %}{% endblock %}
 
 {% block stylesheet %}
 <link rel="stylesheet" href="{% static './css/signup.css' %}">
@@ -25,7 +25,7 @@
         <br>
 
         <div class="fields">
-
+            <!-- 
             <div class="input">
                 {{ form.username }}
             </div>
@@ -40,7 +40,9 @@
 
             <div class="input">
                 {{ form.password2 }}
-            </div>
+            </div> -->
+
+            {{form.as_p}}
 
             {% if redirect_field_value %}
             <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />

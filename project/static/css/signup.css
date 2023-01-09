@@ -26,7 +26,7 @@ form .input {
     position: relative;
 }
 
-form .input input{
+form input{
     width: 100% !important;
     padding-right: 2.5rem;
     height: 50px;
