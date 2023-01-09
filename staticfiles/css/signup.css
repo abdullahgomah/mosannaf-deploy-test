@@ -1,5 +1,6 @@
 form {
-    max-width: fit-content;
+    max-width: fit-content !important;
+    background: red;
     box-shadow: 4px 4px 20px #32323220;
     margin: 1rem auto;
     /* width: fit-content !important;  */
@@ -28,7 +29,7 @@ form .input {
 
 form .input input{
     width: 100% !important;
-    padding-right: 2.5rem; 
+    padding-right: 2.5rem;
     height: 50px;
     outline: none;
     border: 1px solid #888888 !important;

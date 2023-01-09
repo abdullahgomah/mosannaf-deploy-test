@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     'django.contrib.sites',
 
+
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -52,6 +53,7 @@ INSTALLED_APPS = [
     # 'printinghouse',
     # 'publisher',
     'mosannaf',
+    'users',
 
 ]
 
@@ -175,3 +177,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
 CSRF_TRUSTED_ORIGINS = ['https://web-production-b14c.up.railway.app']
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
