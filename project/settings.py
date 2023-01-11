@@ -41,6 +41,10 @@ INSTALLED_APPS = [
 
     'django.contrib.sites',
 
+    'crispy_forms',
+    'crispy_bootstrap5',
+    'django_filters',
+
 
     'allauth',
     'allauth.account',
@@ -190,3 +194,8 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'abdullahgomah2000@gmail.com'
 EMAIL_HOST_PASSWORD = 'hjsnhqgcvnatlhev'
+
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap"

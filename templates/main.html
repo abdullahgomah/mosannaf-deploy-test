@@ -9,9 +9,9 @@
             <div class="search">
                 <input type="text" name="search_input" placeholder="ابحث عن كتاب أو مطبوعة">
                 {% if messages %}
-                    {% for message in messages %}
-                        <p class="{{message.tags}}" style="color: white;">{{message}}</p>
-                    {% endfor %}
+                {% for message in messages %}
+                <p class="{{message.tags}}" style="color: white;">{{message}}</p>
+                {% endfor %}
                 {% endif %}
                 <img src="{% static './assets/images/search-outline.svg' %}" alt="">
             </div>
@@ -20,7 +20,7 @@
         <div class="cta">
             <!-- <a href="#" class="btn btn-solid-dark">الكورسات</a> -->
             <a href="{% url 'pages:suggest' %}" class="btn btn-solid-dark">ترشيح مصنف</a>
-            <a href="#" class="btn btn-outline-light">بحث متقدم</a>
+            <a href="{% url 'mosannaf:advanced-search' %}" class="btn btn-outline-light">بحث متقدم</a>
         </div>
 
 
