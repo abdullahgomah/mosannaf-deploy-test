@@ -1,6 +1,8 @@
 from django.db import models
 
 from django_countries.fields import CountryField
+from django.core.validators import MaxValueValidator, MinValueValidator
+from django.contrib.auth.models import User
 
 # from publisher.models import Publisher
 # from printinghouse.models import PrintingHouse
@@ -142,9 +144,12 @@ class CoverArtists(models.Model):
 
 # تقييم المصنف
 class Rate(models.Model):
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, verbose_name='المستخدم')
     mosannaf = models.ForeignKey(
         Mosannaf, on_delete=models.CASCADE, verbose_name="المصنف", related_name='mosannaf_rate')
     details = models.CharField(max_length=250, verbose_name="التقييم")
+    stars = models.IntegerField(verbose_name='عدد النجوم', default=0)
 
     def __str__(self):
         return f"تقييم {self.mosannaf.name}"
