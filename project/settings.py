@@ -185,8 +185,6 @@ CSRF_TRUSTED_ORIGINS = ['https://web-production-b14c.up.railway.app']
 
 ACCOUNT_EMAIL_REQUIRED = True
 
-ACCOUNT_AUTHENTICATION_METHOD = "email"
-
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
