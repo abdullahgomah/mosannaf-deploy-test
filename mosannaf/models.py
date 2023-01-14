@@ -184,6 +184,9 @@ class Category(models.Model):
 class Specialization(models.Model):
     name = models.CharField(max_length=100, verbose_name='الاسم')
 
+    def __str__(self):
+        return self.name 
+
     class Meta:
         verbose_name = 'تخصص'
         verbose_name_plural = 'التخصصات'

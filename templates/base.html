@@ -36,6 +36,11 @@
                     <li><a href="{% url 'pages:contact' %}" class="list-item">اتصل بنا</a></li>
                 </ul>
             </div>
+            {% if user.is_authenticated %}
+            <div class="cta">
+                <a href="{% url 'accounts:profile' %}">{{user}}</a>
+            </div>
+            {% else %}
             <div class="cta">
                 <a href="{% url 'account_login' %}" class="btn btn-solid-dark">دخول</a>
                 <a href="{% url 'account_signup' %}" class="btn btn-outline-dark">
@@ -43,8 +48,10 @@
                     تسجيل حساب
                 </a>
             </div>
+            {% endif %}
+
             <div class="profile">
-                <a href="#" class="list-item black">
+                <a href="{% url 'accounts:profile' %}" class="list-item black">
                     <img src="{% static './assets/images/profile-img.jpg' %}" class="profile-img" alt="">
                     <!-- <i class="fas fa-user    "></i> -->
                 </a>
