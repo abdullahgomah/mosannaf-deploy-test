@@ -1,14 +1,70 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}
 الملف الشخصي
 {% endblock title %}
 
 
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static './css/profile.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&display=swap" rel="stylesheet">
+
+<style>
+  .public-information {
+    padding: 1rem;
+  }
+  .info div {
+    padding-top: 1rem;
+  }
+  .info div h3 {
+    padding-bottom: .5rem;
+  }
+</style>
+{% endblock stylesheet %}
+
+
 {% block content %}
 <div class="container">
-
-  <h1>الملف الشخصي</h1>
-
+  <h1>حسابك</h1>
+  <p>قم بإدارة التفاصيل الخاصة بك، وعرض حالتك وكلمة المرور الخاصة بك</p>
+  <div class="public-information">
+    <h2>معلومات عامة</h2>
+      <div class="info">
+        <div>
+          <h3>الاسم الاول</h3>
+          <input type="text">
+        </div>	
+        <div>
+          <h3>اسم العائلة</h3>
+          <input type="text">
+        </div>
+        <div>
+          <h3>اللغة المفضلة</h3>
+          <select id="lang">
+            <option value="volvo">English</option>
+            <option value="saab">عربي</option>
+          </select>
+        </div>
+      </div>
+      <a href="#" class="update">تحديث المعلومات</a>
+  </div>
+  <div class="security">
+    <h2>الحماية</h2>
+      <div class="info">
+        <div>
+          <h3>البريد الالكتروني</h3>
+          <input type="text" placeholder="ادخل البريد الالكتروني">
+        </div>
+        <div>
+          <h3>كلمة السر</h3>
+          <input type="text" placeholder="ادخل كلمة السر">
+        </div>
+      </div>
+    <a href="" class="update" id="upd"> تغيير كلمة المرور</a>
+    <a href="#" class="delete">حذف الحساب</a>
+  </div>
 </div>
 {% endblock %}
