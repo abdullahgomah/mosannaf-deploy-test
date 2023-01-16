@@ -61,7 +61,7 @@ def add_rate(request):
         id = int(request.POST.get('mosannaf_id'))
         mosannaf = get_object_or_404(Mosannaf, id=id)
 
-        Rate.objects.create(mosannaf=mosannaf, details=details)
+        Rate.objects.create(user=request.user, mosannaf=mosannaf, details=details)
 
         return JsonResponse({'feedbacks': serializers.serialize('json', Rate.objects.filter(mosannaf=mosannaf))})
 

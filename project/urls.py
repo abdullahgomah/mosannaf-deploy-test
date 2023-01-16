@@ -24,8 +24,8 @@ urlpatterns = [
     path("admin/", admin.site.urls, name='admin'),
     path('accounts/', include('allauth.urls')),
     path('accounts/', include('users.urls', namespace='accounts')),
-    path('', include('pages.urls', namespace='pages')),
     path('mosannaf/', include('mosannaf.urls', namespace='mosannaf')),
+    path('', include('pages.urls', namespace='pages')),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

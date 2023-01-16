@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block title %}
 الملف الشخصي
@@ -32,26 +33,45 @@
   <p>قم بإدارة التفاصيل الخاصة بك، وعرض حالتك وكلمة المرور الخاصة بك</p>
   <div class="public-information">
     <h2>معلومات عامة</h2>
-      <div class="info">
-        <div>
-          <h3>الاسم الاول</h3>
-          <input type="text">
-        </div>	
-        <div>
-          <h3>اسم العائلة</h3>
-          <input type="text">
+    <form method="POST" enctype="multipart/form-data">
+      <!-- <div class="info">
+          {% csrf_token %}
+          <div>
+            <h3>الاسم الاول</h3>
+            {{user_update.first_name}}
+          </div>
+          <div>
+            <h3>الاسم الأخير</h3>
+            {{user_update.last_name}}
+          </div>
+          <div>
+            <h3>البريد الإلكتروني</h3>
+            {{user_update.email}}
+          </div>
+        </div> -->
+        {% csrf_token %}
+        <div class="info">
+          <div>
+            {{user_update.username|as_crispy_field}}
+          </div>
+          <div>
+            {{user_update.email|as_crispy_field}}
+          </div>
+          <div>
+            {{user_update.first_name|as_crispy_field}}
+          </div>
+          <div>
+            {{user_update.last_name|as_crispy_field}}
+          </div>
+          <div>
+            {{profile_update.image|as_crispy_field}}
+          </div>
         </div>
-        <div>
-          <h3>اللغة المفضلة</h3>
-          <select id="lang">
-            <option value="volvo">English</option>
-            <option value="saab">عربي</option>
-          </select>
-        </div>
-      </div>
+        <button type="submit" class="btn btn-solid-dark">تحديث المعلومات</button>
+      </form>
       <!-- <a href="#" class="update">تحديث المعلومات</a> -->
       <br>
-      <a href="#" class="btn btn-solid-dark">تحديث المعلومات</a>
+      <!-- <a href="#" class="btn btn-solid-dark">تحديث المعلومات</a> -->
   </div>
   <div class="security">
     <h2>الحماية</h2>

@@ -20,7 +20,7 @@
             {% for result in results %}
             <div class="book swiper-slide">
                 <img src="{{result.image.url}}" alt="" class="book_img">
-                <a href="{% url ' mosannaf:details' result.id %}">
+                <a href="{% url 'mosannaf:details' result.id %}">
                     <p class="book_title">{{result.name}}</p>
                 </a>
             </div>

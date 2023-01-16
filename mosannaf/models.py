@@ -145,7 +145,7 @@ class CoverArtists(models.Model):
 # تقييم المصنف
 class Rate(models.Model):
     user = models.ForeignKey(
-        User, on_delete=models.CASCADE, verbose_name='المستخدم', related_name='rated_user')
+        User, on_delete=models.CASCADE, verbose_name='المستخدم', related_name='rated_user', null=True)
     mosannaf = models.ForeignKey(
         Mosannaf, on_delete=models.CASCADE, verbose_name="المصنف", related_name='mosannaf_rate')
     details = models.CharField(max_length=250, verbose_name="التقييم")

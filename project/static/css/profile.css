@@ -32,6 +32,11 @@ body{
 .public-information div > input{
     width: 280px;
     height: 40px;
+    padding: 0 .5rem; 
+}
+.public-information #image-clear_id {
+    width: 50px; 
+    height: 50px;
 }
 #lang{
     width: 280px;
