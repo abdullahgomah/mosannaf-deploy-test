@@ -83,6 +83,14 @@
                     اتصل بنا
                 </a></li>
 
+
+                {% if user.is_superuser %}
+                <li><a href="/admin" class="list-item">
+                        <i class="fa-brands fa-windows"></i>
+                        لوحة الإدارة
+                    </a></li>
+                {% endif %}
+
             {% if user.is_authenticated %}
             <li><a href="{% url 'account_logout' %}" class="list-item">
                     <i class="fa-solid fa-right-from-bracket"></i>

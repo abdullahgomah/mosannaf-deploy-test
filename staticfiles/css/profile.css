@@ -38,7 +38,7 @@ body{
     height: 40px;
 }
 /*زر ال update*/
-.public-information a{
+/* .public-information a{
     margin: 20px;
     text-decoration: none;
     color: white;
@@ -49,7 +49,7 @@ body{
     display: inline-block;
     border-radius: 5px;
     font-weight: 700;
-}
+} */
 .public-information a:hover{
     background-color: #3E72F7;
 }

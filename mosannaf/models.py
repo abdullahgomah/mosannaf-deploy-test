@@ -63,10 +63,10 @@ class Mosannaf(models.Model):
     #     "Activity", verbose_name='النشاط', on_delete=models.SET_NULL, blank=True, null=True)
     activity = models.CharField(max_length=200, verbose_name="النشاط")
 
-    image = models.ImageField(verbose_name='صورة المصنف', upload_to='أغلفة/',
+    image = models.ImageField(verbose_name='صورة المصنف', upload_to='covers/',
                               height_field=None, width_field=None, max_length=None)
     file = models.FileField(verbose_name='ملف المصنف',
-                            upload_to='مصنفات/', max_length=100)
+                            upload_to='mosannafat/', max_length=100)
     m_format = models.ForeignKey(
         "Formats", verbose_name="صيغة المصنف", blank=True, null=True, on_delete=models.SET_NULL)
 
@@ -126,7 +126,7 @@ class Mosannaf(models.Model):
         "CoverArtists", verbose_name="فنان الغلاف", on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
-        return self.name
+        return str(self.name)
 
     class Meta:
         verbose_name = 'مصنف'
@@ -145,7 +145,7 @@ class CoverArtists(models.Model):
 # تقييم المصنف
 class Rate(models.Model):
     user = models.ForeignKey(
-        User, on_delete=models.CASCADE, verbose_name='المستخدم')
+        User, on_delete=models.CASCADE, verbose_name='المستخدم', related_name='rated_user')
     mosannaf = models.ForeignKey(
         Mosannaf, on_delete=models.CASCADE, verbose_name="المصنف", related_name='mosannaf_rate')
     details = models.CharField(max_length=250, verbose_name="التقييم")
