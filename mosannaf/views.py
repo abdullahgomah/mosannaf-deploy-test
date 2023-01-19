@@ -94,3 +94,4 @@ def advanced_search(request):
         'results': results,
     }
     return render(request, 'mosannaf/advanced-search.html', context)
+
