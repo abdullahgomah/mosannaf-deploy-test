@@ -11,5 +11,4 @@ urlpatterns = [
     path('add-rate/', add_rate, name='add-rate'),
     path('get-feedbacks/', get_feedbacks, name='get-feedbacks'),
     path('advanced-search/', advanced_search, name='advanced-search'),
-    path('del-rate/<int:id>/', del_rate, name='del-rate')
 ]
