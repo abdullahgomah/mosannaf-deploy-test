@@ -47,3 +47,9 @@ def suggest(request):
         'content': content,
     }
     return render(request, 'pages/suggest.html', context)
+
+
+## handle errors 
+
+def handel404(request, exception):
+    return render(request, '404.html', status=404)

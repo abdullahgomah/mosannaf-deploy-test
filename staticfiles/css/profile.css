@@ -32,6 +32,11 @@ body{
 .public-information div > input{
     width: 280px;
     height: 40px;
+    padding: 0 .5rem; 
+}
+.public-information #image-clear_id {
+    width: 50px; 
+    height: 50px;
 }
 #lang{
     width: 280px;
@@ -50,9 +55,9 @@ body{
     border-radius: 5px;
     font-weight: 700;
 } */
-.public-information a:hover{
+/* .public-information a:hover{
     background-color: #3E72F7;
-}
+} */
 /*ديف الحماية*/
 .security{
     background-color: #ffffff;

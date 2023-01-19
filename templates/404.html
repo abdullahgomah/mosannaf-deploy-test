@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+مصنف | الصفحة غير موجودة    
+{% endblock title %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="{% static './css/404.css' %}">
+{% endblock stylesheet %}
+
+
+{% block content %}
+
+<div class="main">
+    <div class="container">
+            <p class="big-heading">404</p>
+            <p class="heading">أوبس !! الصفحة غير موجودة</p>
+            <a href="{% url 'pages:index' %}" class="btn btn-solid-dark">العودة للصفحة الرئيسية</a>
+        </div>
+    </div>
+    
+{% endblock content %}
