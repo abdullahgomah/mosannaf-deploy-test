@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 from .models import *
@@ -32,6 +33,7 @@ def contact(request):
     return render(request, 'pages/contact.html', context)
 
 
+@login_required
 def suggest(request):
     content = Home.objects.last()
     if request.POST:

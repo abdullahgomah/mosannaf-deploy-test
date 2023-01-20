@@ -6,6 +6,9 @@ from django.http import HttpResponse, JsonResponse
 from django.core import serializers
 import json
 from .filters import MosannafFilter
+from django.contrib.auth.decorators import login_required
+
+
 
 # Create your views here.
 
@@ -54,7 +57,7 @@ def search(request):
 
     return render(request, 'mosannaf/search_results.html', context)
 
-
+@login_required
 def add_rate(request):
     if request.POST.get('action') == 'post':
         details = request.POST.get('details')

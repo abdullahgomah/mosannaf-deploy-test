@@ -162,8 +162,12 @@
         <form method="POST" id="add-feedback">
             {% csrf_token %}
             <div class="input">
-              {{form1}}
+            {{form1}}
+            {% if user.is_authenticated %}
                 <button type="submit" id="send-button" class="btn btn-solid-dark">إرسال</button>
+            {% else  %}
+                 <a href='{% url "account_login" %}' class="btn btn-solid-dark">إرسال</a>
+            {% endif %}
             </div>
         </form>
         <div class="heading">
