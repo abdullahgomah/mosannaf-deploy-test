@@ -199,5 +199,5 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap"
 
 
-## LOGIN / LOGOUT URLS 
+# LOGIN / LOGOUT URLS 
 LOGIN_URL = '/accounts/login'
