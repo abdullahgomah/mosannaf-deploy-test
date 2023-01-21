@@ -243,9 +243,9 @@ header .cta .btn {
 
 main {
     height: calc(100vh - 80px); 
-    background: url("../assets/images/main-img1.jpg");
+    /* background: url("../assets/images/main-img1.jpg"); */
     background-position: center center;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat !important;
     background-size: cover; 
     background-attachment: fixed;
     max-width: 100%;
