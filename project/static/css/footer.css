@@ -1,9 +1,11 @@
 
 footer{
+    margin-top: 2rem;
     background: rgb(46, 45, 45);
     text-align: right;
-   padding: 10px;
-   font-family: system-ui;
+    padding: 10px;
+    width: 100%;
+    height: auto;
     
 }
 footer a{
@@ -19,20 +21,18 @@ footer span{
 
 
 .part1{
-     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    direction: rtl;
+    justify-content: space-between;
    line-height: 2;
    margin-bottom: 1rem;
 
 }
+.part1 div {flex:1}
 ul{
     list-style: none;
 }
 footer hr{
-    width: 80%;
     margin: 0 auto;
 }
 
@@ -59,12 +59,12 @@ footer hr{
 
 @media(max-width: 574px) {
 .part1 {
-max-width: max-content;
-display: block;
-      
+    max-width: max-content;
+    display: block;
+        
 }
 ul{
-margin: 0;
+    margin: 0;
 }
 
 
