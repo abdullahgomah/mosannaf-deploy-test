@@ -10,6 +10,8 @@ class Home(models.Model):
     sub_sentence = models.CharField(
         max_length=250, verbose_name='الجملة الثانوية (الفرعية)')
 
+    main_img = models.ImageField(upload_to='mainImages/', verbose_name="الصورة الرئيسية")
+
     class Meta:
         verbose_name = 'الصفحة الرئيسية'
         verbose_name_plural = 'الصفحة الرئيسية'

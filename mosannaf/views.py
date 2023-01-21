@@ -7,7 +7,7 @@ from django.core import serializers
 import json
 from .filters import MosannafFilter
 from django.contrib.auth.decorators import login_required
-
+from pages.models import Home
 
 
 # Create your views here.
@@ -15,9 +15,11 @@ from django.contrib.auth.decorators import login_required
 
 def all(request):
     mosannafs = Mosannaf.objects.all().order_by('-date_published')
+    content = Home.objects.last()
 
     context = {
         'mosannafs': mosannafs,
+        'content': content, 
     }
 
     return render(request, 'mosannaf/all.html', context)
