@@ -1,0 +1,39 @@
+{% load static %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static  '/css/footer.css' %}">
+{% endblock stylesheet %}
+
+
+<footer>
+    <div class="part1">
+        <div>
+            <a href="#"><span>مصنف</span></a><br>
+            <a href="#">نشاط الشركة</a>
+        </div>
+        <div> <ul>
+                <li><a href="#">مركز المصنف </a></li>
+                <li><a href="#"> عن مصنف </a></li>
+                <li><a href="#">اتصل بنا </a></li>
+            </ul></div>
+        <div>
+            <ul>
+                <li><a href="#">ترشيح مصنف</a></li>
+                <li><a href="#">أبلغ عن مشكلة</a></li>
+                <li><a href="#">الدعم الفني</a></li>
+            </ul>
+        </div>
+    </div>
+    <hr>
+
+    <div class="part2">
+        <h4 class="copyrights-sentence">جميع الحقوق محفوظة لدى مصنف</h4>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+
+    </div>
+</footer>
