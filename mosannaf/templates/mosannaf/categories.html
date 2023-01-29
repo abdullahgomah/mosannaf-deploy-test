@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+مصنف | التصنيفات
+{% endblock title %}
+
+
+<!-- CSS CODE -->
+{% block stylesheet %}
+<style>
+    .accordion__button {
+        border: none; 
+        outline: none; 
+        background: var(--secondary-color);
+        color: #Fff; 
+        display: block;
+        
+        width: 100%;
+    }
+</style>
+{% endblock stylesheet %}
+
+
+<!-- HTML CODE -->
+{% block content %}
+
+{% include 'main.html' %}
+
+<div class="container">
+
+    <h1>التصنيفات</h1>
+
+    <div class="accordion">
+        <button class="accordion__button" type="button">Expand Content</button>
+    </div>
+
+</div>
+
+{% endblock %}
+
+<!-- JAVASCRIPT CODE -->
+
+{% block javascript %}
+
+
+
+{% endblock javascript %}

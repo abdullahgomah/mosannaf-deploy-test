@@ -237,6 +237,11 @@ header .cta .btn {
     z-index: 10000;
 }
 
+.menu-parent {
+    cursor: pointer;
+    user-select: none;
+}
+
 
 
 /* main style */

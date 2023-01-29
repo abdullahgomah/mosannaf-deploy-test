@@ -71,10 +71,38 @@
                     <i class="fas fa-home    "></i>
                     الرئيسية
                 </a></li>
-            <li><a href="{% url 'mosannaf:all' %}" class="list-item">
-                    <i class="fas fa-book    "></i>
-                    المصنفات
-                </a></li>
+                <li><a  class="list-item menu-parent">
+                        <i class="fas fa-book    "></i>
+                        المصنفات
+                    </a></li>
+
+                <div class="sub-menu">
+                    <li>
+                        <a href="{% url 'mosannaf:category' 'business_economy' %}" class="list-item">
+                            إقتصاد وأعمال
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{% url 'mosannaf:category' 'languages' %}" class="list-item">
+                            لغات
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{% url 'mosannaf:category' 'medicine_health' %}" class="list-item">
+                            صحة وطب
+                        </a>
+                    </li>
+
+                    <li><a href="{% url 'mosannaf:category' 'modern science' %}" class="list-item">
+                        العلوم الحديثة
+                    </a></li>
+
+                    <li><a href="{% url 'mosannaf:categories' %}" class="list-item">
+                        جميع التصنيفات
+                    </a></li>
+                </div>
             <!-- <li><a href="#" class="list-item">
 					<i class="fas fa-video    "></i>
 					الكورسات
@@ -203,16 +231,6 @@
 
     {% endblock javascript %}
 
-    <!-- <script>
-		var swiper = new Swiper(".mySwiper", {
-			slidesPerView: 4,
-			spaceBetween: 30,
-			pagination: {
-				el: ".swiper-pagination",
-				clickable: true,
-			},
-		});
-	</script> -->
 
 </body>
 

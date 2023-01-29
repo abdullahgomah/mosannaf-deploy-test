@@ -100,3 +100,18 @@ def advanced_search(request):
     }
     return render(request, 'mosannaf/advanced-search.html', context)
 
+
+# categories
+def categories(request):
+    categories = Category.objects.all() 
+    content = Home.objects.last()
+    context = {
+        'categories': categories,
+        'content': content, 
+    }
+    return render(request, 'mosannaf/categories.html', context)
+
+
+def category(request, category_name):
+    context = {}
+    return render(request, 'mosannaf/category.html', context)
