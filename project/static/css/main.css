@@ -242,6 +242,10 @@ header .cta .btn {
     user-select: none;
 }
 
+.sub-menu {
+    display: none;
+}
+
 
 
 /* main style */

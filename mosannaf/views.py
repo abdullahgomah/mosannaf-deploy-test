@@ -113,5 +113,8 @@ def categories(request):
 
 
 def category(request, category_name):
-    context = {}
+    category = get_object_or_404(Branch, title=category_name)
+    context = {
+        'category': category
+    }
     return render(request, 'mosannaf/category.html', context)

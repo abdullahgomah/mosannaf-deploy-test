@@ -229,6 +229,7 @@ class Subject(models.Model):
 
 # جدول القسم
 class Branch(models.Model):
+    title = models.CharField(max_length=150, verbose_name="عنوان القسم (بالإنجليزية)")
     name = models.CharField(max_length=200, verbose_name="القسم")
 
     def __str__(self):
