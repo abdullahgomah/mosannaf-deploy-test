@@ -46,7 +46,13 @@ form .input i {
 form .container .cta {
     display: flex;
     justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
     margin: 1rem 0;
+}
+
+form .container .cta a.btn {
+    max-height: auto;
 }
 
 form .container .cta + p a{

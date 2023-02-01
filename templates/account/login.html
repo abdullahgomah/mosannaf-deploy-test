@@ -65,7 +65,11 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p> -->
       <a class="button secondaryAction" href="{% url 'account_reset_password' %}">هل نسيت كلمة السر؟</a>
       <br>
       <!-- <button class="primaryAction btn btn-solid-dark" type="submit">{% trans "Sign In" %}</button> -->
-      <button class="primaryAction btn btn-solid-dark" type="submit">تسجيل دخول</button>
+      <div class="cta">
+        <button class="primaryAction btn btn-solid-dark" type="submit">تسجيل دخول</button>
+        <a href="/accounts/google/login" class="btn btn-outline-dark"><i class="fa-brands fa-google"></i> تسجيل الدخول بواسطة جوجل</a>
+
+      </div>
 
       {% if messages %}
       <div>
