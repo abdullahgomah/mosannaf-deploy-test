@@ -589,3 +589,8 @@ form .input i {
     padding: 1rem;
     user-select: none;
 }
+
+
+.checked {
+    color: orange;
+}

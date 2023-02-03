@@ -8,3 +8,4 @@ menuParent.addEventListener('click', ()=>{
         subMenu.style.display = 'none';
     }
 })
+

@@ -162,12 +162,26 @@
         <form method="POST" id="add-feedback">
             {% csrf_token %}
             <div class="input">
-            {{form1}}
-            {% if user.is_authenticated %}
+                <div class="cta">
+
+                    <div class="rate">
+                        <button class="star fa fa-star fa-2x checked" id="first"></button>
+                        <button class="star fa fa-star fa-2x checked" id="second"></button>
+                        <button class="star fa fa-star fa-2x checked" id="third"></button>
+                        <button class="star fa fa-star fa-2x" id="fourth"></button>
+                        <button class="star fa fa-star fa-2x" id="fifth"></button>
+                    </div>
+                    <div class="input">
+                        {{form1}}
+                    </div>
+                </div>
+                <button type="submit" id="send-button" class="btn btn-solid-dark">إرسال</button>
+
+            <!-- {% if user.is_authenticated %}
                 <button type="submit" id="send-button" class="btn btn-solid-dark">إرسال</button>
             {% else  %}
                  <a href='{% url "account_login" %}' class="btn btn-solid-dark">إرسال</a>
-            {% endif %}
+            {% endif %} -->
             </div>
         </form>
         <div class="heading">
@@ -205,49 +219,52 @@
 {% endblock content %}
 
 {% block javascript %}
+<script src="{% static 'js/mosannaf_details.js' %}"></script>
 <script>
-  document.querySelector('input[name=details]').setAttribute('placeholder', "اكتب تقييمك هنا")
-    // document.querySelector('input[name=details]').setAttribute('required')
+    
+
+document.querySelector('input[name=details]').setAttribute('placeholder', "اكتب تقييمك هنا")
+// document.querySelector('input[name=details]').setAttribute('required')
 
 
-    function getFeedbacks() {
-        $.ajax({
-            type: 'GET',
-            url: '{% url "mosannaf:get-feedbacks" %}',
-            data: {
-                mosannaf_id: '{{mosannaf.id}}',
-                action: 'get'
-            },
-            success: function(response) {
-                feedbacks = response['feedbacks'];
-                $('#feedbacks-container').html(response);
-            }, error: function(xhr, errmsg, err) {
+function getFeedbacks() {
+    $.ajax({
+        type: 'GET',
+        url: '{% url "mosannaf:get-feedbacks" %}',
+        data: {
+            mosannaf_id: '{{mosannaf.id}}',
+            action: 'get'
+        },
+        success: function(response) {
+            feedbacks = response['feedbacks'];
+            $('#feedbacks-container').html(response);
+        }, error: function(xhr, errmsg, err) {
 
-            }
-        })
-    }
-
-    getFeedbacks();
-
-    $(document).on('click', '#send-button', function(e) {
-        e.preventDefault();
-        $.ajax({
-            type: 'POST',
-            url: '{% url "mosannaf:add-rate" %}',
-            data: {
-                mosannaf_id: '{{mosannaf.id}}',
-                details: $("input[name=details]").val(),
-                csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
-                action: 'post'
-            },
-            success: function(json) {
-                getFeedbacks();
-
-                document.querySelector("#add-feedback").reset();
-            }, error: function (xhr, errmsg, err) {
-
-            }
-        })
+        }
     })
+}
+
+getFeedbacks();
+
+$(document).on('submit', '#add-feedback', function(e) {
+    e.preventDefault();
+    $.ajax({
+        type: 'POST',
+        url: '{% url "mosannaf:add-rate" %}',
+        data: {
+            mosannaf_id: '{{mosannaf.id}}',
+            details: $("input[name=details]").val(),
+            csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+            action: 'post'
+        },
+        success: function(json) {
+            getFeedbacks();
+
+            document.querySelector("#add-feedback").reset();
+        }, error: function (xhr, errmsg, err) {
+
+        }
+    })
+})
 </script>
 {% endblock javascript %}

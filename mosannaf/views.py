@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from .models import *
 from .forms import *
@@ -61,7 +61,11 @@ def search(request):
 
 @login_required
 def add_rate(request):
+
     if request.POST.get('action') == 'post':
+        if not request.user.is_authenticated:
+            return redirect('/accounts/login')
+            
         details = request.POST.get('details')
         id = int(request.POST.get('mosannaf_id'))
         mosannaf = get_object_or_404(Mosannaf, id=id)
