@@ -225,3 +225,9 @@
     margin-top:1rem; 
     width: fit-content;
 }
+
+.star {
+    outline: none; 
+    border: none; 
+    background: transparent; 
+}

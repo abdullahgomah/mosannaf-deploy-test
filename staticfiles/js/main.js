@@ -1,7 +1,11 @@
-// let humburger = document.querySelector(".humburger");
-// navbar = document.querySelector(".nav-bar");
-// humburger.onclick = function () {
-//   cta = document.querySelector(".header-cta");
-//   cta.classList.toggle("active");
-//   navbar.classList.toggle("active");
-// };
+let menuParent = document.querySelector('.menu-parent') 
+let subMenu = document.querySelector('.sub-menu'); 
+
+menuParent.addEventListener('click', ()=>{
+    if (subMenu.style.display == 'none') {
+        subMenu.style.display = 'block';
+    } else {
+        subMenu.style.display = 'none';
+    }
+})
+
