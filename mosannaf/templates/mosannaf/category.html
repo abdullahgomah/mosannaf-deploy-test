@@ -5,9 +5,58 @@
 مصنف
 {% endblock title %}
 
+{% block stylesheet %}
+<style>
+    .grid {
+        margin-top: 1.5rem;
+        gap:1rem;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    .item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem 2.5rem;
+        border-radius: 20px;
+        background-color: #78459D;
+        width: 200px ;
+    }
+    .item img {
+        width: 100px;
+        margin-bottom: 1rem;
+    }
+    .item p {
+    }
+    .item a{
+        color: var(--primary-color);
+        font-size: 1.2rem;
+        font-weight: 500;
+    }
+    .item a {
+        text-decoration: none;
+    }
+</style>
+{% endblock stylesheet %}
+
+
 {% block content %}
 <div class="container">
-    <h1>مصنف</h1>
-    {{category}}
+    <h1>{{category}}</h1>
+    
+    <div class="grid">
+        {% for category in sub_categories %}
+        <div class="item" style="background-color: {{category.background_hex}}">
+            <a href="#">
+                {% if category.img %}
+                <img src="{{category.img.url}}" alt="">
+                {% endif %}
+                <p>
+                    <a style="color: {{category.color_hex}}">{{category}}</a>
+                </p>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
 </div>
 {% endblock content %}

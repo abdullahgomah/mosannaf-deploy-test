@@ -30,7 +30,7 @@ class Mosannaf(models.Model):
     fields = models.ManyToManyField("Field", verbose_name="المجالات")
 
     category = models.ForeignKey(
-        "Category", verbose_name="الفئة", on_delete=models.SET_NULL, null=True, blank=True)
+        "MosannafCategory", verbose_name="الفئة", on_delete=models.SET_NULL, null=True, blank=True)
     specialization = models.ForeignKey(
         "Specialization", verbose_name="التخصصص", on_delete=models.SET_NULL, null=True, blank=True)
     original_lang = models.ForeignKey(
@@ -173,7 +173,7 @@ class Type(models.Model):
         verbose_name_plural = 'أنوع المصنفات'
 
 
-class Category(models.Model):
+class MosannafCategory(models.Model):
     name = models.CharField(max_length=250, verbose_name='فئة المصنف')
 
     def __str__(self):
@@ -234,6 +234,10 @@ class Subject(models.Model):
 class Branch(models.Model):
     title = models.CharField(max_length=150, verbose_name="عنوان القسم (بالإنجليزية)")
     name = models.CharField(max_length=200, verbose_name="القسم")
+    img = models.ImageField(upload_to='branches/', verbose_name='صورة المصنف', null=True, blank=True)
+    background_hex = models.CharField(verbose_name='كود Hex لون الخلفية', max_length=20, null=True, blank=True)
+    color_hex = models.CharField(verbose_name='كود Hex لون الخط', max_length=20, null=True, blank=True)
+    
 
     def __str__(self):
         return self.name
@@ -248,6 +252,10 @@ class SubBranch(models.Model):
     branch = models.ForeignKey(
         "Branch", verbose_name='القسم', on_delete=models.CASCADE)
     name = models.CharField(max_length=250, verbose_name="القسم الفرعي")
+    img = models.ImageField(upload_to='branches/', verbose_name='صورة المصنف', null=True, blank=True)
+    background_hex = models.CharField(verbose_name='كود Hex لون الخلفية', max_length=20, null=True, blank=True)
+    color_hex = models.CharField(verbose_name='كود Hex لون الخط', max_length=20, null=True, blank=True)
+    
 
     def __str__(self):
         return self.name

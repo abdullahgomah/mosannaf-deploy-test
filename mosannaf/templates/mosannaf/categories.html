@@ -9,14 +9,34 @@
 <!-- CSS CODE -->
 {% block stylesheet %}
 <style>
-    .accordion__button {
-        border: none; 
-        outline: none; 
-        background: var(--secondary-color);
-        color: #Fff; 
-        display: block;
-        
-        width: 100%;
+    .grid {
+        margin-top: 1.5rem;
+        gap:1rem;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    .item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem 2.5rem;
+        border-radius: 20px;
+        background-color: #78459D;
+        width: 200px ;
+    }
+    .item img {
+        width: 100px;
+    }
+    .item p {
+        margin-top: 1rem;
+    }
+    .item a{
+        color: var(--primary-color);
+        font-size: 1.2rem;
+        font-weight: 500;
+    }
+    .item a {
+        text-decoration: none;
     }
 </style>
 {% endblock stylesheet %}
@@ -29,10 +49,21 @@
 
 <div class="container">
 
-    <h1>التصنيفات</h1>
+    <div class="heading">
+        <h1>الأقسام</h1>
+    </div>
 
-    <div class="accordion">
-        <button class="accordion__button" type="button">Expand Content</button>
+    <div class="grid">
+        {% for category in categories %}
+        <div class="item" style="background-color: {{category.background_hex}}">
+            <a href="{% url 'mosannaf:category' category.title %}">
+                <img src="{{category.img.url}}" alt="">
+                <p>
+                    <a style="color: {{category.color_hex}}">{{category}}</a>
+                </p>
+            </a>
+        </div>
+        {% endfor %}
     </div>
 
 </div>

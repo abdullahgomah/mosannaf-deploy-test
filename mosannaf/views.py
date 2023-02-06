@@ -107,7 +107,7 @@ def advanced_search(request):
 
 # categories
 def categories(request):
-    categories = Category.objects.all() 
+    categories = Branch.objects.all() 
     content = Home.objects.last()
     context = {
         'categories': categories,
@@ -118,7 +118,14 @@ def categories(request):
 
 def category(request, category_name):
     category = get_object_or_404(Branch, title=category_name)
+    sub_categories = SubBranch.objects.filter(branch__exact=category)
+    mosannafs = Mosannaf.objects.filter(branch=category)
+
+    print(category)
+    print(sub_categories)
     context = {
-        'category': category
+        'category': category,
+        'sub_categories': sub_categories, 
+        'mosannafs': mosannafs
     }
     return render(request, 'mosannaf/category.html', context)
