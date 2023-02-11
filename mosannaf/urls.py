@@ -12,5 +12,6 @@ urlpatterns = [
     path('get-feedbacks/', get_feedbacks, name='get-feedbacks'),
     path('advanced-search/', advanced_search, name='advanced-search'),
     path('categories/', categories, name='categories'),
-    path('categories/category/<str:category_name>/', category, name='category'),
+    path('categories/category/<str:slug>/', category, name='category'),
+    path('categories/category/<str:category_name>/<str:sub_category>/', sub_category, name='sub-category'),
 ]

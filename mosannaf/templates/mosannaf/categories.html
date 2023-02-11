@@ -56,7 +56,7 @@
     <div class="grid">
         {% for category in categories %}
         <div class="item" style="background-color: {{category.background_hex}}">
-            <a href="{% url 'mosannaf:category' category.title %}">
+            <a href="{% url 'mosannaf:category' category.slug %}">
                 <img src="{{category.img.url}}" alt="">
                 <p>
                     <a style="color: {{category.color_hex}}">{{category}}</a>

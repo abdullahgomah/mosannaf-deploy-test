@@ -7,33 +7,34 @@
 
 {% block stylesheet %}
 <style>
-    .grid {
+    .categories-grid {
         margin-top: 1.5rem;
         gap:1rem;
+        display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     }
-    .item {
+    .categories-item {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         padding: 1rem 2.5rem;
         border-radius: 20px;
-        background-color: #78459D;
-        width: 200px ;
+        background-color: #212121;
+        width: 200px;
     }
-    .item img {
+    .categories-item img {
         width: 100px;
         margin-bottom: 1rem;
     }
-    .item p {
+    .categories-item p {
     }
-    .item a{
+    .categories-item a{
         color: var(--primary-color);
         font-size: 1.2rem;
         font-weight: 500;
     }
-    .item a {
+    .categories-item a {
         text-decoration: none;
     }
 </style>
@@ -42,21 +43,68 @@
 
 {% block content %}
 <div class="container">
-    <h1>{{category}}</h1>
+    <h1>{{category_title}}</h1>
     
-    <div class="grid">
+    <div class="categories-grid">
         {% for category in sub_categories %}
-        <div class="item" style="background-color: {{category.background_hex}}">
+        <div class="categories-item" style="background-color: {{category.background_hex}}">
             <a href="#">
                 {% if category.img %}
                 <img src="{{category.img.url}}" alt="">
                 {% endif %}
                 <p>
-                    <a style="color: {{category.color_hex}}">{{category}}</a>
+                    <a style="color: {{category.color_hex}}" href='{% url "mosannaf:sub-category" category_title.slug category.slug %}'>{{category}}</a>
+                    {% comment %} {% url "mosannaf:sub-category" category.branch.slug category.slug %} {% endcomment %}
                 </p>
             </a>
         </div>
         {% endfor %}
     </div>
+
+
+    {% if mosannafs|length != 0  %}
+    
+    <br>
+    <br>
+    <section class=" section books-section" id="mainwoman">
+        <div class="container swiper mySwiper">
+            <div class="heading">
+                <h2 class="intro-heading">مصنفات في "{{category_title}}"</h2>
+            </div>
+            <div class="books swiper-wrapper">
+                {% for mosannaf in mosannafs %}
+                <div class="book swiper-slide">
+                    <img src="{{mosannaf.image.url}}" alt="" class="book_img">
+                        <p class="book_title">
+                            <a href="{% url 'mosannaf:details' mosannaf.id %}">{{mosannaf}}</a>
+                        </p>
+                        <i>
+                            {{mosannaf.author}}
+                        </i>
+                </div>
+                {% endfor %}
+                
+
+
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+
+            <!-- <a href="#" class="btn btn-solid-dark">عرض المزيد</a> -->
+        </div>
+    </section>
+    {% else %}
+    <div>
+        <br>
+        <h2>لا يوجد مصنفات في "{{category_title}}"</h2>
+        <div class="buttons-group">
+            <a href="{% url 'pages:suggest' %}" class="btn btn-solid-dark">ترشيح مصنف</a>
+            <a href="{% url 'pages:index' %}" class="btn btn-solid-dark">الصفحة الرئيسية</a>
+        </div>
+    </div>
+    {% endif %}
+
+
 </div>
 {% endblock content %}

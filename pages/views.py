@@ -4,12 +4,23 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 from .models import * 
+from mosannaf.models import Branch, Mosannaf
 
 
 def index(request):
+    """
+    تعتمد أقسام الكتب الظاهرة في الصفحة الرئيسية على قاعدة بيانات 
+    الأقسام في تطبيق "مصنف" .... 
+    حقل "عرض في الصفحة الرئيسية" .. 
+    في حالة الحقل "نعم" يتم العرض والعكس
+    """
+    categories = Branch.objects.filter(view_in_home__exact=True)
+    mosannafs = Mosannaf.objects.all() 
     content = Home.objects.last()
     context = {
+        'categories': categories, 
         'content': content,
+        'mosannafs': mosannafs,
     }
     return render(request, 'pages/index.html', context)
 

@@ -3,6 +3,7 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from django_countries.fields import CountryField
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.contrib.auth.models import User
+from django.template.defaultfilters import slugify
 
 # from publisher.models import Publisher
 # from printinghouse.models import PrintingHouse
@@ -237,6 +238,25 @@ class Branch(models.Model):
     img = models.ImageField(upload_to='branches/', verbose_name='صورة المصنف', null=True, blank=True)
     background_hex = models.CharField(verbose_name='كود Hex لون الخلفية', max_length=20, null=True, blank=True)
     color_hex = models.CharField(verbose_name='كود Hex لون الخط', max_length=20, null=True, blank=True)
+    view_in_home = models.BooleanField(default=False, verbose_name="عرض في الصفحة الرئيسية")
+    slug = models.SlugField(verbose_name='الاسم الظاهر في الرابط', max_length=100, allow_unicode=True, null=True, blank=True, unique=True)
+
+    def arabic_slugify(self, str):
+        str = str.replace(" ", "-")
+        str = str.replace(",", "-")
+        str = str.replace("(", "-")
+        str = str.replace(")", "")
+        str = str.replace("؟", "")
+        return str
+
+    def save(self, *args, **kwargs):
+        if not self.slug: 
+            self.slug = slugify(self.name)
+            if not self.slug:
+                self.slug = self.arabic_slugify(self.name)
+        super(Branch, self).save(*args, **kwargs)
+
+
     
 
     def __str__(self):
@@ -255,7 +275,24 @@ class SubBranch(models.Model):
     img = models.ImageField(upload_to='branches/', verbose_name='صورة المصنف', null=True, blank=True)
     background_hex = models.CharField(verbose_name='كود Hex لون الخلفية', max_length=20, null=True, blank=True)
     color_hex = models.CharField(verbose_name='كود Hex لون الخط', max_length=20, null=True, blank=True)
-    
+    slug = models.SlugField(verbose_name='الاسم الظاهر في الرابط', max_length=100, allow_unicode=True, null=True, blank=True, unique=True)
+
+    def arabic_slugify(self, str):
+        str = str.replace(" ", "-")
+        str = str.replace(",", "-")
+        str = str.replace("(", "-")
+        str = str.replace(")", "")
+        str = str.replace("؟", "")
+        return str
+
+    def save(self, *args, **kwargs):
+        if not self.slug: 
+            self.slug = slugify(self.name)
+            if not self.slug:
+                self.slug = self.arabic_slugify(self.name)
+        super(SubBranch, self).save(*args, **kwargs)
+
+
 
     def __str__(self):
         return self.name

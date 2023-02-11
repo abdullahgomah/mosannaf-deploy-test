@@ -116,16 +116,40 @@ def categories(request):
     return render(request, 'mosannaf/categories.html', context)
 
 
-def category(request, category_name):
-    category = get_object_or_404(Branch, title=category_name)
-    sub_categories = SubBranch.objects.filter(branch__exact=category)
+def category(request, slug):
+    """
+    THIS function take an objects from Branch model and SubBranch Model 
+    هذه دالة القسم الواحدة وتحتوي على المصنفات التي تخص القسم كما تحتوي على الأقسام الفرعبة لهذا القسم
+    """
+    category= Branch.objects.get(slug=slug)
+    print(category)
+    sub_categories = SubBranch.objects.filter(branch=category)
     mosannafs = Mosannaf.objects.filter(branch=category)
 
-    print(category)
-    print(sub_categories)
+    # print(mosannafs)
+
     context = {
-        'category': category,
+        'category_title': category,
         'sub_categories': sub_categories, 
+        'mosannafs': mosannafs
+    }
+    return render(request, 'mosannaf/category.html', context)
+
+
+def sub_category(request, category_name, sub_category):
+    """
+    دالة الأقسام الفرعية
+    تحتوي على الأقسام الفرعية التي تندرج تحت قسم معين كما تحوي الكتب التي تخص هذا القسم فقط
+    Sub Category Function
+    It contains sub categories < category, it also contains books for this category (Branch) 
+    """
+    category= SubBranch.objects.get(slug=sub_category)
+    mosannafs = Mosannaf.objects.filter(sub_branch__name=sub_category)
+    
+    print(category)
+
+    context = {
+        'category': category, 
         'mosannafs': mosannafs
     }
     return render(request, 'mosannaf/category.html', context)
