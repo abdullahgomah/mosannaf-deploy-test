@@ -1,4 +1,5 @@
 {% load static %}
+{% load user_info %}
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
@@ -58,7 +59,8 @@
 
             <div class="profile">
                 <a href="{% url 'accounts:profile' %}" class="list-item black">
-                    <img src="{% static './assets/images/profile-img.jpg' %}" class="profile-img" alt="">
+                    {% comment %} <img src="{% static './assets/images/profile-img.jpg' %}" class="profile-img" alt=""> {% endcomment %}
+                    <img src="{{request.user|user_image}}" alt={{request.user}} class="profile-img" alt="">
                     <!-- <i class="fas fa-user    "></i> -->
                 </a>
             </div>

@@ -153,10 +153,10 @@ class Rate(models.Model):
     score = models.IntegerField(verbose_name='عدد النجوم', default=0, validators=[
         MinValueValidator(0), 
         MaxValueValidator(5)
-    ])
+    ], null=True, blank=True)
 
     def __str__(self):
-        return f"تقييم {self.mosannaf.name}"
+        return f"تقييم {self.mosannaf.name} | {self.details}"
 
     class Meta:
         verbose_name = 'تقييم'

@@ -226,8 +226,8 @@
     width: fit-content;
 }
 
-.star {
-    outline: none; 
+.my-btn {
+    background: transparent;
     border: none; 
-    background: transparent; 
+    outline: none; 
 }

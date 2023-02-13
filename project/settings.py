@@ -56,7 +56,7 @@ INSTALLED_APPS = [
     # 'printinghouse',
     # 'publisher',
     'mosannaf',
-    'users.apps.UsersConfig',
+    'users',
 
 ]
 

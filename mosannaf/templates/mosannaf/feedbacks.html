@@ -1,15 +1,23 @@
+
+
 {% for feedback in feedbacks %}
 <div class="feedback">
     <div class="feedback-account">
         <p class="feedback-account__user">{{feedback.user}}</p>
         <div class="feedback-account__rate">
             <div class="stars">
-                <i class="fas fa-star "></i>
-                <i class="fas fa-star-half "></i>
+                {% with ''|center:feedback.score as range %}
+                    {% for _ in range %}
+                        <i class="fas fa-star "></i>
+                    {% endfor %}
+                {% endwith %}
+                {% comment %} {% for x in feedback.score|times %} {% endcomment %}
+                {% comment %} <i class="fas fa-star-half "></i> {% endcomment %}
+                {% comment %} {% endfor %} {% endcomment %}
             </div>
             <p>
                 <!-- provided by django -->
-                (4.8 / 5)
+                ({{feedback.score}} / 5)
             </p>
         </div>
     </div>

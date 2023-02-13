@@ -67,10 +67,11 @@ def add_rate(request):
             return redirect('/accounts/login')
             
         details = request.POST.get('details')
+        score = request.POST.get('score')
         id = int(request.POST.get('mosannaf_id'))
         mosannaf = get_object_or_404(Mosannaf, id=id)
 
-        Rate.objects.create(user=request.user, mosannaf=mosannaf, details=details)
+        Rate.objects.create(user=request.user, mosannaf=mosannaf, details=details, score=score)
 
         return JsonResponse({'feedbacks': serializers.serialize('json', Rate.objects.filter(mosannaf=mosannaf))})
 
