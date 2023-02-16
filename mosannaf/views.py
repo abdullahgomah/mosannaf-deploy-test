@@ -25,8 +25,8 @@ def all(request):
     return render(request, 'mosannaf/all.html', context)
 
 
-def details(request, id):
-    mosannaf = Mosannaf.objects.get(id=id)
+def details(request, slug):
+    mosannaf = Mosannaf.objects.get(slug=slug)
     form = RateForm()
     form1 = AddRate()
     rates = Rate.objects.filter(mosannaf=mosannaf)

@@ -54,7 +54,7 @@ INSTALLED_APPS = [
 
     'pages',
     # 'printinghouse',
-    # 'publisher',
+    'publisher',
     'mosannaf',
     'users',
 

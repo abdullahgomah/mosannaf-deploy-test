@@ -6,12 +6,10 @@ from .models import *
 admin.site.register(MosannafCategory)
 admin.site.register(Type)
 admin.site.register(Mosannaf)
-# admin.site.register(Subject)
 admin.site.register(Field)
 admin.site.register(Branch)
 admin.site.register(SubBranch)
 admin.site.register(Lang)
-# admin.site.register(Activity)
 admin.site.register(Formats)
 admin.site.register(Forms)
 admin.site.register(Street)
@@ -27,7 +25,6 @@ admin.site.register(Rate)  # جدول التقييمات
 admin.site.register(TranslatedMosannaf)
 
 
-admin.site.register(Publisher)
 admin.site.register(UnitType)
 
 

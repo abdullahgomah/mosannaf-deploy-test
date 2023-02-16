@@ -19,7 +19,10 @@
             {% for mosannaf in mosannafs %}
             <div class="book swiper-slide">
                 <img src="{{mosannaf.image.url}}" alt="" class="book_img">
-                <a href="{% url 'mosannaf:details' mosannaf.id %}" class="book_title"><p class="book_title">{{mosannaf.name}}</p>
+                <p class="book_title">
+                    <a href="{% url 'mosannaf:details' mosannaf.slug %}">{{mosannaf}}</a>
+                </p>
+                <i>{{mosannaf.author}}</i>
             </div>
             {% endfor %}
             

@@ -38,6 +38,7 @@
                 <ul>
                     <li><a href="{% url 'pages:index' %}" class="list-item">الرئيسية</a></li>
                     <li><a href="{% url 'mosannaf:all' %}" class="list-item">المصنفات</a></li>
+                    <li><a href="{% url 'mosannaf:all' %}" class="list-item">مترجم مصنف</a></li>
                     <!-- <li><a href="#" class="list-item">الكورسات</a></li> -->
                     <li><a href="{% url 'mosannaf:categories' %}" class="list-item">الأقسام</a></li>
                     <li><a href="{% url 'pages:contact' %}" class="list-item">اتصل بنا</a></li>
@@ -60,7 +61,9 @@
             <div class="profile">
                 <a href="{% url 'accounts:profile' %}" class="list-item black">
                     {% comment %} <img src="{% static './assets/images/profile-img.jpg' %}" class="profile-img" alt=""> {% endcomment %}
+                    {% if user.is_authenticated %}
                     <img src="{{request.user|user_image}}" alt={{request.user}} class="profile-img" alt="">
+                    {% endif %}
                     <!-- <i class="fas fa-user    "></i> -->
                 </a>
             </div>
