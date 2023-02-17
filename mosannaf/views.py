@@ -24,6 +24,18 @@ def all(request):
 
     return render(request, 'mosannaf/all.html', context)
 
+def all_translated(request): 
+    '''
+    THIS is gets all mosannafs from TranslatedMosannaf model
+    '''
+    mosannafs = TranslatedMosannaf.objects.all().order_by("-date-published") 
+    content = Home.objects.last() 
+
+    context = {
+
+    }
+
+    return render(request, 'mosannaf/all.html', context) 
 
 def details(request, slug):
     mosannaf = Mosannaf.objects.get(slug=slug)
